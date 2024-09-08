@@ -2,7 +2,7 @@
 class Order:
     def __init__(self, customer, coffee, price):
         #Initialize an Order instance with a customer, coffee, and price.
-        if not isinstance(customer, Customer) or not isinstance(coffee, Coffee):
+        if not isinstance(customer) or not isinstance(coffee):
             raise ValueError("Customer and coffee must be instances of Customer and Coffee respectively")
         if not isinstance(price, float) or not 1.0 <= price <= 10.0:
             raise ValueError("Price must be a float between 1.0 and 10.0")
