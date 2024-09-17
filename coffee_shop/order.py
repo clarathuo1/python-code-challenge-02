@@ -1,26 +1,28 @@
-
 class Order:
-    def __init__(self, customer, coffee, price):
-        #Initialize an Order instance with a customer, coffee, and price.
-        if not isinstance(customer) or not isinstance(coffee):
-            raise ValueError("Customer and coffee must be instances of Customer and Coffee respectively")
-        if not isinstance(price, float) or not 1.0 <= price <= 10.0:
-            raise ValueError("Price must be a float between 1.0 and 10.0")
-        self._customer = customer
-        self._coffee = coffee
-        self._price = price
+    def _init_(self, customer, coffee, price):
+# Validate that the price is a float and is between 1.0 and 10.0
+        if not isinstance(price, (int,float)) or not(1.0 <= price <= 10.0):
+            raise ValueError("Price must be a number between 1.0 and 10.0 ")
+#  Validate that customer is a Customer object and coffee is a Coffee object
+        if not isinstance(customer, Customer) or not isinstance(coffee, Coffee):
+            raise ValueError("Customer and Coffee must be valid objects")
 
-    @property
-    def customer(self):
-        #Return the customer object for that order.
-        return self._customer
+# Assign the customer, coffee, and price to the order instance
+        self.customer = customer
+        self.coffee = coffee
+        self.price = price
 
-    @property
-    def coffee(self):
-        #Return the coffee object for that order.
-        return self._coffee
+# Customer property (read-only)
+        @property
+        def customer(self):
+            return self._customer
 
-    @property
-    def price(self):
-        #Return the price for the order.
-        return self._price
+# Coffee property (read-only)
+        @property
+        def coffee(self):
+            return self._coffee
+
+# Price property (read-only)
+        @property
+        def price(self):
+            return self._price
